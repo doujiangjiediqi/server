@@ -199,9 +199,10 @@ namespace sylar
 
     void Logger::log(LogLevel::Level level, LogEvent::ptr event)
     {
-        auto self = shared_from_this();
+
         if (level >= m_level)
         {
+            auto self = shared_from_this();
             for (auto &i : m_appenders)
             {
                 i->log(self, level, event);
@@ -287,9 +288,9 @@ namespace sylar
         std::string nstr;
         for (size_t i = 0; i < m_pattern.size(); ++i)
         {
-            if (m_pattern[i] == '%')
+            if (m_pattern[i] != '%')
             {
-                nstr.append(m_pattern);
+                nstr.append(1, m_pattern[i]);
                 continue;
             }
 
