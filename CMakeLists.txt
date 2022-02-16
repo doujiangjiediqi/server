@@ -14,5 +14,5 @@ add_executable(test tests/test.cpp)
 add_dependencies(test sylar)
 target_link_libraries(test sylar)
 
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin})
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
