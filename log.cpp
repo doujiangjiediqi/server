@@ -333,7 +333,7 @@ namespace sylar
                     {
                         fmt = m_pattern.substr(fmt_begin + 1, n - fmt_begin - 1);
                         fmt_status = 2;
-                        continue;
+                        break;
                     }
                 }
                 ++n;
@@ -348,7 +348,7 @@ namespace sylar
                 }
                 str = m_pattern.substr(i + 1, n - i - 1);
                 vec.push_back(std::make_tuple(str, fmt, 1));
-                i = n;
+                i = n - 1;
             }
             else if (fmt_status == 1)
             {
@@ -363,7 +363,7 @@ namespace sylar
                     nstr.clear();
                 }
                 vec.push_back(std::make_tuple(str, fmt, 1));
-                i = n;
+                i = n - 1;
             }
         }
 
