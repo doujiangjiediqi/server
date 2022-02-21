@@ -41,7 +41,7 @@ namespace sylar
     {
     public:
         MessageFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << event->getContent();
         }
@@ -51,7 +51,7 @@ namespace sylar
     {
     public:
         LevelFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << LogLevel::ToString(level);
         }
@@ -61,7 +61,7 @@ namespace sylar
     {
     public:
         ElapseFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << event->getElapse();
         }
@@ -71,7 +71,7 @@ namespace sylar
     {
     public:
         NameFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << logger->getName();
         }
@@ -81,7 +81,7 @@ namespace sylar
     {
     public:
         ThreadIdFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << event->getThreadId();
         }
@@ -91,7 +91,7 @@ namespace sylar
     {
     public:
         FiberIdFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << event->getFiberId();
         }
@@ -107,7 +107,7 @@ namespace sylar
                 m_format = "%Y-%m-%d %H:%M:%S";
             }
         }
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             struct tm tm;
             time_t time = event->getTime();
@@ -125,7 +125,7 @@ namespace sylar
     {
     public:
         FilenameFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << event->getFile();
         }
@@ -135,7 +135,7 @@ namespace sylar
     {
     public:
         LineFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << event->getLine();
         }
@@ -145,7 +145,7 @@ namespace sylar
     {
     public:
         NewLineFormatItem(const std::string &str = "") {}
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << std::endl;
         }
@@ -157,7 +157,7 @@ namespace sylar
         StringFormatItem(const std::string &str) : m_string(str)
         {
         }
-        void format(std::ostream &os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) override
+        void format(std::ostream &os, Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override
         {
             os << m_string;
         }
