@@ -262,7 +262,7 @@ namespace sylar
         if (level >= m_level)
         {
             std::string str = m_formatter->format(logger, level, event);
-            std::cout << str << "*****" << std::endl;
+            std::cout << str;
         }
     }
 
@@ -271,7 +271,7 @@ namespace sylar
         init();
     }
 
-    std::string LogFormatter::format(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event)
+    std::string LogFormatter::format(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event)
     {
         std::stringstream ss;
         for (auto &i : m_items)
